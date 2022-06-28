@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+#/ command: jayce-public/git:checkout: "git checkout branch."
+#/ usage: rerun jayce-public/git:checkout [options]
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables: 
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "checkout" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_check_include_common_function
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+. "$RERUN_MODULE_DIR/commands/checkout/main.sh" || {
+  echo >&2 "Failed loading main.sh file." ; exit 1 ;
+}
+
+# Done. Exit with last command exit status.
+exit $?
+

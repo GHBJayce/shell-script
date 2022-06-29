@@ -1,6 +1,6 @@
 #!/usr/bin/env roundup
 #
-#/ usage:  rerun stubbs:test -m jayce-public/git -p checkout [--answers <>]
+#/ usage:  rerun stubbs:test -m jayce-public/git -p pick [--answers <>]
 #
 
 # Helpers
@@ -9,7 +9,7 @@
 
 # The Plan
 # --------
-describe "checkout"
+describe "pick"
 
 # ------------------------------
 # Replace this test. 

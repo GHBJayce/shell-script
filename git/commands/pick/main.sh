@@ -2,7 +2,7 @@
 commits=($COMMITS)
 
 for item in ${commits[@]}; do
-    echo "Current picked commit: ${item}"
+    echo "Current picking commit: ${item}"
     res=$(git cherry-pick $item 2>&1 &)
     if [[ $res =~ 'hint after resolving the conflicts' ]]; then
         rerun_log warn 'Has conflicts, continue pick?'

@@ -1,0 +1,14 @@
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "pick" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+. "$RERUN_MODULE_DIR/commands/pick/main.sh" || {
+  echo >&2 "Failed loading main.sh file." ; exit 1 ;
+}
+exit $?
+

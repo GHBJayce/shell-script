@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+#/ command: download:image: "batch download image."
+#/ usage: rerun download:image  --link <> [ --config <>] 
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables: LINK CONFIG
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "image" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+linkFileDirPath=$LINK
+configFileDirPath=$CONFIG
+
+curlOptionProxyIp=
+curlOptionProxyPort=
+if [ -f "$configFileDirPath" ]; then
+    saveDirPath=$(rerun_config_get "${configFileDirPath}" "DOWNLOAD_SAVE_DIR_PATH")
+    curlOptionProxyIp=$(rerun_config_get "${configFileDirPath}" "CURL_OPTION_PROXY_IP")
+    curlOptionProxyPort=$(rerun_config_get "${configFileDirPath}" "CURL_OPTION_PROXY_PORT")
+fi
+defaultSaveDirPath="${HOME}/Downloads/download-images"
+saveDirPath=${saveDirPath:-$defaultSaveDirPath}/`basename ${linkFileDirPath%\.*}`_`date +%Y-%m-%d_%H-%M-%S`
+
+rerun_include_sh "$RERUN_MODULE_DIR/commands/image/main.sh"
+
+# Done. Exit with last command exit status.
+exit $?
+

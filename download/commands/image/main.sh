@@ -5,7 +5,7 @@ mkdir -p $saveDirPath
 cd $saveDirPath
 
 # total number of read file rows
-total=$(wc -l $linkFileDirPath | awk '{print $1}')
+total=$(awk 'END{print NR}' $linkFileDirPath)
 current=$total
 for imageURL in `cat $linkFileDirPath`
 do

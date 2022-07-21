@@ -4,8 +4,8 @@ commits=($COMMITS)
 for item in ${commits[@]}; do
     echo "Current picking commit: ${item}"
     res=$(git cherry-pick $item 2>&1 &)
-    if [[ $res =~ 'hint after resolving the conflicts' ]]; then
-        rerun_log warn 'Has conflicts, continue pick?'
+    if [[ $res =~ 'after resolving the conflicts' ]]; then
+        rerun_log warn 'Has conflicts! You can pick it after handling the conflict. Continue?'
         option=$(askChooseOption 'Yes No')
         if [ "$option" == "No" ]; then
             break

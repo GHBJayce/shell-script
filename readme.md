@@ -18,4 +18,8 @@ rerun git:pick  # cherry-pick one or more commits.
 rerun download:image  # batch download image.
     --link  # file with links, one line one link.
     --config # config file. detail see ".config.example" file
+# example: rerun service:nginx --action start
+rerun service:nginx
+rerun service:mysql
+    --action # support: start|stop|restart
 ```

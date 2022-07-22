@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+#/ command: service:mysql: "mysql service."
+#/ usage: rerun service:mysql [ --action <start>]
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables:
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "mysql" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+serviceShortName='mysql'
+serviceName='mysql.server'
+cacheFilePath="${RERUN_MODULE_DIR}/cache/.service.cache"
+servicePathCacheKey='SERVICE_MYSQL_PATH'
+
+rerun_include_sh "$RERUN_MODULE_DIR/commands/mysql/main.sh"
+
+# Done. Exit with last command exit status.
+exit $?
+

@@ -1,6 +1,4 @@
 
-# 用户交互相关
-
 # 询问用户选择选项
 # param array $1 选项列表
 function askChooseOption()

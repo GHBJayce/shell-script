@@ -21,5 +21,6 @@ rerun download:image  # batch download image.
 # example: rerun service:nginx --action start
 rerun service:nginx
 rerun service:mysql
+rerun service:redis
     --action # support: start|stop|restart
 ```

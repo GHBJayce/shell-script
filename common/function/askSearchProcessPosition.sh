@@ -7,7 +7,7 @@ function askSearchProcessPosition()
     processName=$1
     processDirPath=${2-/}
     options=$(searchProcessPosition "${processName}" "${processDirPath}")
-    if [ ! $options ]; then
+    if [ -z "${options}" ]; then
         read -r -p $'Process service not found in the "'${processDirPath}$'". \n Please re-enter the path to search: ' searchServiceDirPath
         options=$(askSearchProcessPosition "${processName}" "${searchServiceDirPath}")
     fi

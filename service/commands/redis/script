@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+#/ command: service:redis: "redis service."
+#/ usage: rerun service:redis [ --action <start>]
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables: ACTION
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "redis" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+serviceShortName='redis'
+serviceName='redis-server'
+serviceConfigFileName='redis.conf'
+cacheFilePath="${RERUN_MODULE_DIR}/cache/.service.cache"
+servicePathCacheKey='SERVICE_REDIS_PATH'
+serviceConfigFilePathCacheKey='SERVICE_REDIS_CONF_PATH'
+
+
+rerun_include_sh "$RERUN_MODULE_DIR/commands/redis/main.sh"
+
+# Done. Exit with last command exit status.
+exit $?
+

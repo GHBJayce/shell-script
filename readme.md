@@ -24,4 +24,8 @@ rerun service:mysql
 rerun service:redis
 rerun service:php-fpm
     --action # support: start|stop|restart
+# example: rerun service:batch --services "mysql redis php-fpm" --action start
+rerun service:batch
+    --action # support: start|stop|restart
+    --services # support: nginx|mysql|redis|php-fpm
 ```

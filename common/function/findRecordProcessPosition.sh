@@ -11,6 +11,11 @@ function findRecordProcessPosition()
     cacheFilePath=$3
     cacheKey=$4
 
+    if [ ! -f $cacheFilePath ]; then
+        dirname $cacheFilePath | xargs mkdir -p
+        touch $cacheFilePath
+    fi
+
     servicePath=$(rerun_config_get "${cacheFilePath}" "${cacheKey}")
     if [ -z $servicePath ]; then
         options=$(askSearchProcessPosition "${processName}" "${processDirPath}")

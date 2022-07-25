@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+#/ command: service:batch: "batch operation service."
+#/ usage: rerun service:batch [ --action <start>]  --services <> 
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables: ACTION SERVICES
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "batch" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+services=($SERVICES)
+
+rerun_include_sh "$RERUN_MODULE_DIR/commands/batch/main.sh"
+
+# Done. Exit with last command exit status.
+exit $?
+

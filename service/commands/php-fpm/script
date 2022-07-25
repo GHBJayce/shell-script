@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+#/ command: service:php-fpm: "php-fpm service."
+#/ usage: rerun service:php-fpm [ --action <start>]
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables: ACTION
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "php-fpm" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+serviceShortName='php-fpm'
+serviceName='php-fpm'
+cacheFilePath="${RERUN_MODULE_DIR}/cache/.service.cache"
+servicePathCacheKey='SERVICE_PHP_FPM_PATH'
+
+rerun_include_sh "$RERUN_MODULE_DIR/commands/php-fpm/main.sh"
+
+# Done. Exit with last command exit status.
+exit $?
+

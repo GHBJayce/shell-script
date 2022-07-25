@@ -1,6 +1,5 @@
 
 servicePath=$(findRecordProcessPosition "${serviceName}" '/usr/local' "${cacheFilePath}" "${servicePathCacheKey}")
-serviceConfigFilePath=$(findRecordProcessPosition "${serviceConfigFileName}" '/usr/local' "${cacheFilePath}" "${serviceConfigFilePathCacheKey}")
 serviceDirPath=$(dirname "${servicePath}" | xargs dirname)
 
 function log()
@@ -15,7 +14,7 @@ function log()
 function start()
 {
     if [ $(processHasRunning "${serviceShortName}" "${serviceDirPath}") -eq 0 ]; then
-        $(${servicePath} ${serviceConfigFilePath} 2>&1)
+        $(${servicePath} -RD)
     fi
     log $? 'start'
 }

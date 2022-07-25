@@ -22,5 +22,6 @@ rerun download:image  # batch download image.
 rerun service:nginx
 rerun service:mysql
 rerun service:redis
+rerun service:php-fpm
     --action # support: start|stop|restart
 ```

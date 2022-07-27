@@ -15,7 +15,7 @@ function log()
 function start()
 {
     if [ $(processHasRunning "${serviceShortName}" "${serviceDirPath}") -eq 0 ]; then
-        $(${servicePath} ${serviceConfigFilePath} 2>&1)
+        $($servicePath $serviceConfigFilePath > /dev/null)
     fi
     log $? 'start'
 }

@@ -22,7 +22,9 @@ function start()
 
 function stop()
 {
-    $(ps -ef | grep "${serviceDirPath}" | grep "${serviceShortName}" | grep -v grep | awk '{print $2}' | xargs kill -9)
+    if [ $(processHasRunning "${serviceShortName}" "${serviceDirPath}") -eq 1 ]; then
+        $(ps -ef | grep "${serviceDirPath}" | grep "${serviceShortName}" | grep -v grep | awk '{print $2}' | xargs kill -9)
+    fi
     log $? 'stop'
 }
 

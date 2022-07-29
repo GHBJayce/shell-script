@@ -23,7 +23,9 @@ rerun_options_parse "$@"
 serviceShortName='redis'
 serviceName='redis-server'
 serviceConfigFileName='redis.conf'
-cacheFilePath="${RERUN_MODULE_DIR}/cache/.service.cache"
+moduleCommonDir=$(dirname $RERUN_MODULE_DIR)
+moduleCommonDir="${moduleCommonDir}/common/runtime"
+cacheFilePath="${moduleCommonDir}/cache/.service.cache"
 servicePathCacheKey='SERVICE_REDIS_PATH'
 serviceConfigFilePathCacheKey='SERVICE_REDIS_CONF_PATH'
 

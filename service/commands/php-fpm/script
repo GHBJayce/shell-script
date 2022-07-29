@@ -22,7 +22,9 @@ rerun_options_parse "$@"
 
 serviceShortName='php-fpm'
 serviceName='php-fpm'
-cacheFilePath="${RERUN_MODULE_DIR}/cache/.service.cache"
+moduleCommonDir=$(dirname $RERUN_MODULE_DIR)
+moduleCommonDir="${moduleCommonDir}/common/runtime"
+cacheFilePath="${moduleCommonDir}/cache/.service.cache"
 servicePathCacheKey='SERVICE_PHP_FPM_PATH'
 
 rerun_include_sh "$RERUN_MODULE_DIR/commands/php-fpm/main.sh"

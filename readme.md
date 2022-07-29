@@ -17,7 +17,7 @@ rerun git:pick  # cherry-pick one or more commits.
 # example: rerun download:image --link /home/smile.txt --config /home/.config
 rerun download:image  # batch download image.
     --link  # file with links, one line one link.
-    --config # config file. detail see ".config.example" file
+    --config # config file. detail see "common/config/.download.image.config.example" file
 # example: rerun service:nginx --action start
 rerun service:nginx
 rerun service:mysql

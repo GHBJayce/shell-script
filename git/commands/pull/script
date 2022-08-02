@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+#/ command: git:pull: "git pull script command."
+#/ usage: rerun git:pull [ --directory <origin>] [ --branch <>] [ --remote <origin>]
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables: DIRECTORY BRANCH REMOTE
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "pull" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+
+gitDirectory=$(getCurrentDirPathByName "$DIRECTORY")
+remote=$REMOTE
+branch=$(getCurrentBranchByName "$BRANCH")
+
+rerun_include_sh "$RERUN_MODULE_DIR/commands/pull/main.sh"
+
+# Done. Exit with last command exit status.
+exit $?
+

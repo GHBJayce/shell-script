@@ -16,13 +16,18 @@ rerun git:pick  # cherry-pick one or more commits.
     --commits
 # example: rerun git:pull --directory '/root/project/hello-world' --branch all
 rerun git:pull  # git pull script command.
+rerun git:push  # git push script command.
     --directory # absolute directory path of git.
     --branch # branch name. support: all
     --remote # remote name. default: origin.
+
+
 # example: rerun download:image --link /home/smile.txt --config /home/.config
 rerun download:image  # batch download image.
     --link  # file with links, one line one link.
     --config # config file. detail see "common/config/.download.image.config.example" file.
+
+
 # example: rerun service:nginx --action start
 rerun service:nginx
 rerun service:mysql

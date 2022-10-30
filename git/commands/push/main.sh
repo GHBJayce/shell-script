@@ -8,7 +8,7 @@ cd $gitDirectory
 
 case "$branch" in
     all)
-        echo 'Pushing all branch.'
+        echo -e '\nPushing all branch.'
         res=$(git push $remote --all 2>&1 &)
         if [[ $res =~ 'Enumerating objects' || $res =~ '* [new branch]' ]]; then
             rerun_log info 'Push successful.'
@@ -39,7 +39,7 @@ EOF
         fi
     ;;
     *)
-        echo "Pushing branch: ${remote}/${branch}"
+        echo -e "\nPushing branch: ${remote}/${branch}"
         res=$(git push -u $remote $branch 2>&1 &)
         if [[ $res =~ 'your current branch is behind' ]]; then
             rerun_log error 'Remote branch different of local branch. Please fix it.'

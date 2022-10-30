@@ -28,7 +28,8 @@ branch=$(getCurrentBranchByName "$BRANCH")
 function pullBranch()
 {
     if [ `isCleanGitStatus` -eq 0 ]; then
-        rerun_die 'The current branch is not clean, please handle it before operation.'
+        rerun_log error 'The current branch is not clean, please handle it before operation.'
+        exit 1
     fi
 
     remoteBranch=$1

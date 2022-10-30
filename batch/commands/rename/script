@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+#/ command: batch:rename: "Batch Rename Catalog Files"
+#/ usage: rerun batch:rename [ --directory <>] [ --mode <random>] 
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables: DIRECTORY MODE
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "rename" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+directory=$(getCurrentDirPathByName "$DIRECTORY")
+
+rerun_include_sh "$RERUN_MODULE_DIR/commands/rename/main.sh"
+
+# Done. Exit with last command exit status.
+exit $?
+

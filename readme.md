@@ -38,4 +38,10 @@ rerun service:php-fpm
 rerun service:batch
     --action # support: start|stop|restart
     --services # support: nginx|mysql|redis|php-fpm
+
+
+# example: rerun batch:rename --directory '/Users/jayce/Desktop/dir' --mode 'random'
+rerun batch:rename
+    --directory # Directory absolute path, not required, defaults to the current directory
+    --mode # support: random
 ```

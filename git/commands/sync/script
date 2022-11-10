@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+#/ command: git:sync: "sync remote repository."
+#/ usage: rerun git:sync [ --directory <>] [ --remote <origin>] [ --target <>] 
+#/ rerun-variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option-variables: DIRECTORY REMOTE TARGET
+
+. "$RERUN_MODULE_DIR/lib/functions.sh" "sync" || {
+  echo >&2 "Failed loading function library." ; exit 1 ;
+}
+
+set -o errexit -o nounset -o pipefail
+
+rerun_options_parse "$@"
+
+# Command implementation
+# ----------------------
+
+# - - -
+# Put the command implementation here.
+# - - -
+
+gitDirectory=$(getCurrentDirPathByName "$DIRECTORY")
+remote=$REMOTE
+target=$TARGET
+
+rerun_include_sh "$RERUN_MODULE_DIR/commands/sync/main.sh"
+
+# Done. Exit with last command exit status.
+exit $?
+

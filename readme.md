@@ -20,6 +20,11 @@ rerun git:push  # git push script command.
     --directory # absolute directory path of git.
     --branch # branch name. support: all
     --remote # remote name. default: origin.
+# example: rerun git:sync --directory '/root/project/hello-world' --remote origin --target gitlab
+rerun git:sync  # synchronization between git remote warehouses.
+    --directory # absolute directory path of git. default current directory.
+    --remote # remote origin branch name. default: origin.
+    --target # remote target branch name.
 
 
 # example: rerun download:image --link /home/smile.txt --config /home/.config
@@ -41,7 +46,7 @@ rerun service:batch
 
 
 # example: rerun batch:rename --directory '/Users/jayce/Desktop/dir' --mode 'random'
-rerun batch:rename
-    --directory # Directory absolute path, not required, defaults to the current directory
+rerun batch:rename # batch rename files under the directory.
+    --directory # directory absolute path, default current directory.
     --mode # support: random
 ```

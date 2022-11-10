@@ -70,6 +70,12 @@ function pullSingleBranch()
         rerun_log error "Couldn't find remote."
     elif [[ $res =~ 'Automatic merge failed' || $res =~ 'Exiting because of an unresolved conflict' ]]; then
         rerun_log error 'Has conflicts, fix and then commit the result.'
+        read -r -p "Press any key to continue [Y/n] " input
+        case $input in
+            [yY][eE][sS]|[yY])
+                echo "continue..."
+                ;;
+        esac
     else
         res=$(cat <<- EOF
 Pull failed: $res
